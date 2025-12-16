@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Skyline General Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'copper': '#636161', 
+                        'charred-oak': '#2C1810',
+                        'liquid-gold': '#636161',
+                        'cream-label': '#FFFFFF', 
+                        'dark-glass': '#1A1A1A'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Source Sans Pro', 'sans-serif'],
+                        'accent': ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Removed custom body style as it's not needed with Tailwind classes below */
+        
+        .backdrop-blur-custom {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+        }
+        
+        .input-style {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .input-style:focus {
+            border-color: #636161; 
+            outline: none;
+            /* Updated box-shadow to use the new copper color */
+            box-shadow: 0 0 0 3px rgba(136, 103, 78, 0.2); 
+        }
+        
+        .contact-info-card {
+            transition: transform 0.3s ease;
+        }
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(44, 24, 16, 0.1);
+        }
+    </style>
+</head>
+<body class="font-body text-charred-oak bg-cream-label">
+    <nav class="fixed top-0 w-full z-40 backdrop-blur-custom border-b border-copper border-opacity-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="resources/logo.png" alt="Skyline General Trading Logo" class="h-10 w-10" Style= "width: 10rem;">
+                    <span class="font-accent text-xl font-bold text-charred-oak">Skyline General Trading</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Home</a>
+                    <a href="products.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Products</a>
+                    <a href="about.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">About</a>
+                    <a href="contact.html" class="text-copper font-semibold">Contact</a>
+                </div>
+                
+                <button class="md:hidden text-charred-oak">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 min-h-screen">
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <h1 class="font-display text-4xl lg:text-5xl font-extrabold text-charred-oak text-center mb-10">Get In Touch</h1>
+            
+            <div class="grid lg:grid-cols-3 gap-10">
+                <div class="lg:col-span-2 p-8 bg-white rounded-xl shadow-2xl border-t-4 border-copper">
+                    <h2 class="font-accent text-2xl font-bold text-charred-oak mb-6">Send Us a Message</h2>
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required class="w-full input-style">
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required class="w-full input-style">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full input-style">
+                        </div>
+
+                        <div>
+                            <label for="inquiryType" class="block text-sm font-medium text-gray-700 mb-1">Type of Inquiry</label>
+                            <select id="inquiryType" name="inquiryType" class="w-full input-style">
+                                <option>Product Inquiry</option>
+                                <option>Partnership/Supplier</option>
+                                <option>General Question</option>
+                                <option>Technical Support</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full input-style"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-copper text-cream-label py-3 px-6 rounded-lg font-bold uppercase tracking-wider hover:bg-charred-oak transition-colors duration-300 shadow-md">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="contact-info-card p-6 bg-white rounded-xl shadow-lg border-l-4 border-liquid-gold">
+                        <h3 class="font-accent text-xl font-bold text-charred-oak mb-2">Kuwait Head Office</h3>
+                        <p class="text-gray-600 mb-3">Salmiya, Salem Al Mubarak St</p>
+                        <button onclick="openDirections()" class="text-copper font-semibold hover:underline">Get Directions</button>
+                    </div>
+                    
+                    <div class="contact-info-card p-6 bg-white rounded-xl shadow-lg border-l-4 border-liquid-gold">
+                        <h3 class="font-accent text-xl font-bold text-charred-oak mb-2">Call Us</h3>
+                        <p class="text-gray-600 mb-3">+965 2220 0000</p>
+                        <a href="tel:+96522200000" class="text-copper font-semibold hover:underline">Click to Call</a>
+                    </div>
+                    
+                    <div class="contact-info-card p-6 bg-white rounded-xl shadow-lg border-l-4 border-liquid-gold">
+                        <h3 class="font-accent text-xl font-bold text-charred-oak mb-2">Email Us</h3>
+                        <p class="text-gray-600 mb-3">info@skyline-trade.com</p>
+                        <a href="mailto:info@skyline-trade.com" class="text-copper font-semibold hover:underline">Send an Email</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+            <h2 class="font-display text-3xl font-bold text-charred-oak text-center mb-6">Our Location</h2>
+            <div class="bg-gray-100 h-96 rounded-xl shadow-inner border border-gray-200 flex items-center justify-center">
+                <p class="text-xl text-gray-500 font-accent">Map Placeholder - Kuwait Head Office</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark-glass text-cream-label py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Skyline General Trading</h4>
+                    <p class="text-gray-300 text-sm">
+                        Bridging global markets with local expertise in raw materials and commodities trade.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Home</a></li>
+                        <li><a href="products.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Products</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-copper transition-colors duration-300">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Resources</h4>
+                    <ul>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Market Reports</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Supplier Portal</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Client List</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Visit Us</h4>
+                    <p class="text-gray-300 mb-2">
+                        Salmiya, Salem Al Mubarak St
+                    </p>
+                    <p class="text-gray-300">
+                        Kuwait Head Office
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const firstName = document.getElementById('firstName').value;
+            const inquiryType = document.getElementById('inquiryType').options[document.getElementById('inquiryType').selectedIndex].text;
+            
+            // Simulate form submission
+            alert(`Thank you for your ${inquiryType} inquiry, ${firstName}! Our team will contact you shortly.`);
+            
+            // Reset form
+            e.target.reset();
+        });
+        
+        // Open directions (Updated to Kuwait address)
+        function openDirections() {
+            const address = 'Salmiya, Salem Al Mubarak St, Maryam Center Area 62, Building 85, 5th Floor, Office 29, Kuwait';
+            const encodedAddress = encodeURIComponent(address);
+            
+            // Opens a new tab with Google Maps directions to the Kuwait address
+            window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
+        }
+    </script>
+</body>
+</html>

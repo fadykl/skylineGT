@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Skyline General Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'copper': '#636161', 
+                        'charred-oak': '#2C1810',
+                        'liquid-gold': '#D4AF37',
+                        'cream-label': '#FFFFFF', 
+                        'dark-glass': '#1A1A1A'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Source Sans Pro', 'sans-serif'],
+                        'accent': ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Removed custom body style as it's not needed with Tailwind classes below */
+        
+        .backdrop-blur-custom {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+        }
+        
+        .timeline-item {
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: #636161; 
+            border-radius: 50%;
+            border: 4px solid #FFFFFF; 
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            bottom: -20px;
+            width: 2px;
+            background: #636161; 
+        }
+        
+        .process-step {
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-body text-charred-oak bg-cream-label">
+    <nav class="fixed top-0 w-full z-40 backdrop-blur-custom border-b border-copper border-opacity-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="resources/logo.png" alt="Skyline General Trading Logo" class="h-10 w-10" Style= "width: 10rem;">
+                    <span class="font-accent text-xl font-bold text-charred-oak">Skyline General Trading</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Home</a>
+                    <a href="products.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Products</a>
+                    <a href="about.html" class="text-copper font-semibold">About</a>
+                    <a href="contact.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Contact</a>
+                </div>
+                
+                <button class="md:hidden text-charred-oak">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 min-h-screen">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <h1 class="font-display text-4xl lg:text-5xl font-extrabold text-charred-oak text-center mb-10 border-b border-copper pb-4">Our Journey: Excellence in Trade</h1>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="resources/about.png" alt="Modern business setting" class="rounded-xl shadow-2xl">
+                </div>
+                <div class="space-y-6">
+                    <p class="text-lg leading-relaxed text-gray-700">
+                        Skyline General Trading was established on the principle of bridging global markets with local expertise. For over a decade, we have dedicated ourselves to sourcing, trading, and distributing high-quality raw materials and specialized products across the region.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-700">
+                        Our strength lies in our deep understanding of the supply chain dynamics and our commitment to building **lasting partnerships**. We strive not just to meet, but to **exceed international standards** in every transaction.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="font-accent font-bold text-2xl text-copper">Integrity</span>
+                        <span class="font-accent font-bold text-2xl text-copper">Quality</span>
+                        <span class="font-accent font-bold text-2xl text-copper">Reliability</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-display text-3xl font-bold text-charred-oak text-center mb-12">Our Core Values</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-copper">
+                        <h3 class="font-accent text-xl font-semibold text-charred-oak mb-3">Customer Focus</h3>
+                        <p class="text-gray-600">Tailoring solutions to the unique needs of our clients is our highest priority, ensuring their success is our success.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-copper">
+                        <h3 class="font-accent text-xl font-semibold text-charred-oak mb-3">Global Sourcing</h3>
+                        <p class="text-gray-600">Maintaining an extensive, vetted network of international suppliers to ensure competitive and stable supply.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-copper">
+                        <h3 class="font-accent text-xl font-semibold text-charred-oak mb-3">Sustainability</h3>
+                        <p class="text-gray-600">Committed to ethical and environmentally conscious trade practices for a better future.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <h2 class="font-display text-3xl font-bold text-charred-oak text-center mb-12">Milestones</h2>
+            
+            <div class="relative pl-6">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item mb-12 fade-in">
+                    <h3 class="font-accent text-xl font-bold text-charred-oak mb-1">2010: Foundation</h3>
+                    <p class="text-gray-600">Skyline General Trading is established in Kuwait, focusing initially on regional construction materials.</p>
+                </div>
+                
+                <div class="timeline-item mb-12 fade-in">
+                    <h3 class="font-accent text-xl font-bold text-charred-oak mb-1">2014: International Expansion</h3>
+                    <p class="text-gray-600">Secured first major contracts with suppliers in Europe and Asia, significantly expanding product catalog.</p>
+                </div>
+                
+                <div class="timeline-item mb-12 fade-in">
+                    <h3 class="font-accent text-xl font-bold text-charred-oak mb-1">2018: Diversification</h3>
+                    <p class="text-gray-600">Expanded into specialized commodities like industrial metals and chemical feedstock.</p>
+                </div>
+                
+                <div class="timeline-item mb-12 fade-in">
+                    <h3 class="font-accent text-xl font-bold text-charred-oak mb-1">2023: Technology Integration</h3>
+                    <p class="text-gray-600">Launched a digital supply chain management system to enhance efficiency and transparency for all clients.</p>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <h3 class="font-accent text-xl font-bold text-charred-oak mb-1">Today: Future Focused</h3>
+                    <p class="text-gray-600">Continuing to lead with sustainable practices and innovative trading solutions.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-display text-3xl font-bold text-charred-oak text-center mb-12">Our Trading Process</h2>
+                
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div class="process-step p-8 bg-white rounded-xl shadow-lg">
+                        <div class="text-4xl font-display font-bold text-copper mb-4">1</div>
+                        <h3 class="font-accent text-xl font-semibold text-charred-oak mb-2">Sourcing</h3>
+                        <p class="text-gray-600">Identifying and qualifying reliable global partners.</p>
+                    </div>
+                    <div class="process-step p-8 bg-white rounded-xl shadow-lg">
+                        <div class="text-4xl font-display font-bold text-copper mb-4">2</div>
+                        <h3 class="font-accent text-xl font-semibold text-charred-oak mb-2">Logistics</h3>
+                        <p class="text-gray-600">Managing secure and efficient transportation and storage.</p>
+                    </div>
+                    <div class="process-step p-8 bg-white rounded-xl shadow-lg">
+                        <div class="text-4xl font-display font-bold text-copper mb-4">3</div>
+                        <h3 class="font-accent text-xl font-semibold text-charred-oak mb-2">Quality Control</h3>
+                        <p class="text-gray-600">Rigorous inspection and testing to meet specifications.</p>
+                    </div>
+                    <div class="process-step p-8 bg-white rounded-xl shadow-lg">
+                        <div class="text-4xl font-display font-bold text-copper mb-4">4</div>
+                        <h3 class="font-accent text-xl font-semibold text-charred-oak mb-2">Delivery</h3>
+                        <p class="text-gray-600">Timely and documented delivery to the client's site.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark-glass text-cream-label py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Skyline General Trading</h4>
+                    <p class="text-gray-300 text-sm">
+                        Bridging global markets with local expertise in raw materials and commodities trade.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Home</a></li>
+                        <li><a href="products.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Products</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-copper transition-colors duration-300">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Resources</h4>
+                    <ul>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Market Reports</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Supplier Portal</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Client List</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact & Location</h4>
+                    <p class="text-gray-300 mb-2">
+                        Salmiya, Salem Al Mubarak St
+                    </p>
+                    <p class="text-gray-300">
+                        Kuwait Head Office
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for timeline items on scroll (kept from original file structure)
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        fadeInElements.forEach(element => {
+            element.classList.add('opacity-0', 'translate-y-6', 'transition', 'duration-1000');
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

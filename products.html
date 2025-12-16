@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Skyline General Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'copper': '#636161',
+                        'charred-oak': '#2C1810',
+                        'liquid-gold': '#D4AF37',
+                        'cream-label': '#FFFFFF',
+                        'dark-glass': '#1A1A1A'
+                    },
+                    fontFamily: {
+                        display: ['Inter', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        accent: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .section-light-bg { background-color: #f8f8f8; }
+        .backdrop-blur-custom {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .product-card { transition: all 0.3s ease; }
+        .product-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(44, 24, 16, 0.15);
+        }
+        .filter-btn {
+            width: 100%;
+            text-align: left;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            background: #fff;
+            transition: all 0.2s;
+        }
+        .filter-btn.active {
+            background: #636161;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="font-body text-charred-oak bg-cream-label min-h-screen">
+    <nav class="fixed top-0 w-full z-40 backdrop-blur-custom border-b border-copper border-opacity-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="resources/logo.png" alt="Skyline General Trading Logo" class="h-10 w-10" Style= "width: 10rem;">
+                    <span class="font-accent text-xl font-bold text-charred-oak">Skyline General Trading</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Home</a>
+                    <a href="products.html" class="text-copper font-semibold">Products</a>
+                    <a href="about.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">About</a>
+                    <a href="contact.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Contact</a>
+                </div>
+                
+                <button class="md:hidden text-charred-oak">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+			<main class="pt-24">
+					<section class="pb-12 section-light-bg"> 
+						<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+							<div class="text-center">
+								<h1 class="font-display text-4xl lg:text-5xl font-extrabold text-charred-oak pt-10 mb-4">Our Product Portfolio</h1>
+								<p class="text-lg text-gray-700 max-w-2xl mx-auto">
+									A curated selection of the finest industrial materials, commodities, and specialized goods.
+								</p>
+							</div>
+						</div>
+					</section>
+			<section class="py-12">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+							<div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+			<aside class="lg:col-span-1 p-6 bg-white rounded-xl shadow-lg h-min sticky top-24" style>
+				<h2 class="font-accent text-xl font-bold text-charred-oak mb-4 border-b pb-2">Filter Categories</h2>
+				<nav class="space-y-3">
+					<button class="filter-btn active" onclick="filterProducts('all', this)">All Products</button>
+					<button class="filter-btn" onclick="filterProducts('Div 8', this)">Div 8</button>
+					<button class="filter-btn" onclick="filterProducts('Div 9', this)">Div 9</button>
+				</nav>
+			</aside>
+			
+			<div class="lg:col-span-3">
+				<div id="product-grid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-8"></div>
+			</div>
+			 </div>
+			</div>
+			</section>
+			</main>
+<footer class="bg-dark-glass text-cream-label py-10" style="background-color: #101010;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Skyline General Trading</h4>
+                    <p class="text-gray-300 text-sm">
+                        Bridging global markets with local expertise in raw materials and commodities trade.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Home</a></li>
+                        <li><a href="products.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Products</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-copper transition-colors duration-300">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Resources</h4>
+                    <ul>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Market Reports</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Supplier Portal</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Client List</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact & Location</h4>
+                    <p class="text-gray-300 mb-2">
+                        Salmiya, Salem Al Mubarak St
+                    </p>
+                    <p class="text-gray-300">
+                        Kuwait Head Office
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script>
+const productData = [
+    {
+        name: "Gypsum boards",
+        img: "resources/gypsum1.png",
+        short_desc: "Skyline is your one-stop shop for gypsum board products.",
+        category: "Div 9"
+    },
+    {
+        name: "Mineral Fiber",
+        img: "resources/MineralFiber2.png",
+        short_desc: "High-quality mineral fiber ceiling solutions.",
+        category: "Div 9"
+    },
+    {
+        name: "Wall Partition",
+        img: "resources/wall2.jpg",
+        short_desc: "Custom wall partition systems.",
+        category: "Div 9"
+    },
+    {
+        name: "Gypsum Tiles",
+        img: "resources/gypsumtile.png",
+        short_desc: "Durable painted gypsum ceiling tiles.",
+        category: "Div 9"
+    },
+    {
+        name: "Metal Tiles",
+        img: "resources/layinmetal.png",
+        short_desc: "High-end metal ceiling tile systems.",
+        category: "Div 9"
+    },
+	{
+        name: "Specialty Ceiling",
+        img: "resources/SpecialtyCeiling.png",
+        short_desc: "Specialty ceiling systems designed to meet unique architectural, acoustic, and aesthetic requirements.",
+        category: "Div 9"
+    }
+];
+
+function createSlug(name) {
+    return name.toLowerCase().replace(/\s+/g, '-');
+}
+
+function renderProducts(filter = 'all') {
+    const grid = document.getElementById('product-grid');
+    grid.innerHTML = '';
+
+    productData
+        .filter(p => filter === 'all' || p.category === filter)
+        .forEach(product => {
+            grid.insertAdjacentHTML('beforeend', `
+                <a href="product-details-${createSlug(product.name)}.html"
+                   class="product-card bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
+                    <img src="${product.img}" class="h-48 w-full object-cover">
+                    <div class="p-5 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">${product.name}</h3>
+                        <p class="text-gray-600 text-sm">${product.short_desc}</p>
+                    </div>
+                    <div class="px-5 pb-5">
+                        <span class="bg-copper text-white text-xs px-3 py-1 rounded-full uppercase">
+                            ${product.category}
+                        </span>
+                    </div>
+                </a>
+            `);
+        });
+}
+
+function filterProducts(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts(type);
+}
+
+document.addEventListener('DOMContentLoaded', () => renderProducts());
+</script>
+
+</body>
+</html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyline General Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // KEEPING ORIGINAL COLORS
+                        'copper': '#636161',
+                        'charred-oak': '#2C1810',
+                        'liquid-gold': '#D4AF37',
+                        'cream-label': '#FFFFFF', // Retaining #FFFFFF from original config
+                        'dark-glass': '#1A1A1A'
+                    },
+                    fontFamily: {
+                        // All fonts set to Inter for a clean, modern style
+                        'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+                        'display': ['Inter', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                        'accent': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #FFFFFF; /* Cleaner background */
+        }
+        
+        .hero-bg {
+            /* Clean, modern gradient overlay */
+            background: linear-gradient(135deg, rgba(169, 169, 169, 0.9), rgba(136, 103, 78, 0.8)), 
+                        url('resources/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        /* Removed copper-glow */
+        
+        .text-shadow {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
+        }
+        
+        .backdrop-blur-custom {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95); /* White background for modern, floating look */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Subtle shadow for lift */
+        }
+        
+        /* Removed animate-float and @keyframes float */
+        
+        /* Replaced grain-texture with a clean light background for section separation */
+        .section-light-bg {
+            background-color: #f8f8f8; 
+        }
+
+        /* Modern button style with subtle lift and shadow */
+        .modern-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(169, 169, 169, 0.15);
+        }
+        .modern-button:hover {
+            box-shadow: 0 6px 20px rgba(169, 169, 169, 0.25);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-body text-charred-oak">
+    <nav class="fixed top-0 w-full z-40 backdrop-blur-custom border-b border-copper border-opacity-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="resources/logo.png" alt="Skyline General Trading Logo" class="h-10 w-10" Style= "width: 10rem;">
+                    <span class="font-accent text-xl font-bold text-charred-oak">Skyline General Trading</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-copper font-semibold">Home</a>
+                    <a href="products.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Products</a>
+                    <a href="about.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold" >About</a>
+                    <a href="contact.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Contact</a>
+                </div>
+                
+                <button class="md:hidden text-charred-oak">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-20"> <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-cream-label opacity-30"></div>
+        
+        <div class="relative z-10 text-center max-w-5xl mx-auto px-4 py-20">
+            <h1 class="font-display text-6xl lg:text-8xl font-black text-cream-label text-shadow mb-6 tracking-tight">
+                <span id="hero-text"></span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-cream-label text-shadow mb-12 max-w-3xl mx-auto leading-normal font-light">
+                Interior finishing solutions across ceilings, partitions, access doors and decorative cladding for healthcare, education, aviation, commercial and residential projects.
+            </p>
+            
+            <a href="products.html" class="modern-button inline-block bg-copper text-white px-10 py-4 rounded-full hover:bg-liquid-gold font-semibold text-lg uppercase tracking-wider shadow-lg">
+                Explore Solutions
+            </a>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-cream-label animate-bounce opacity-80">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="py-24 section-light-bg"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-start"> <div class="fade-in">
+                    <h2 class="font-display text-4xl md:text-5xl font-extrabold text-charred-oak mb-6 tracking-tight">
+                        About Skyline
+                    </h2>
+                    <p class="text-xl text-charred-oak mb-8 leading-relaxed font-light"> SKYLINE General Trading is based in Kuwait; our well-qualified and experienced team aims to assist you in all aspects of the field of interior finishings. 
+					We provide full solutions for divisions 8 & 9 and represent well-known brands that have proven their
+					success and presence in the field of high-quality finishing products. We also deal with top-quality suppliers, 
+					specializing in full solutions. Our project portfolio includes
+					projects as small as residential units to hospitals, hotels, and any sized project for which we
+					implement the best and most effective solutions that are tailor-made to suit your needs.                    </p>
+                    
+                    <a href="about.html" class="text-copper hover:text-charred-oak font-semibold transition duration-300 flex items-center space-x-2">
+                        <span>Read Our Full Story</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                    
+                    <div class="grid grid-cols-3 gap-8 mt-10 p-6 bg-cream-label rounded-xl shadow-xl border border-gray-100"> <div class="text-center">
+                            <div class="text-4xl font-extrabold text-copper mb-1">2017</div>
+                            <div class="text-sm text-gray-600 uppercase tracking-wider">Founded</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-extrabold text-copper mb-1">9</div>
+                            <div class="text-sm text-gray-600 uppercase tracking-wider">Awards</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-extrabold text-copper mb-1">***</div>
+                            <div class="text-sm text-gray-600 uppercase tracking-wider">text 3</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in pt-10 lg:pt-0">
+                    <img src="resources/image.jpg" alt="Skyline Office Interior"  style="height: 500px;"
+                         class="w-full object-cover rounded-xl shadow-2xl transform hover:scale-[1.01] transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-cream-label">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 fade-in">
+            <h2 class="font-display text-4xl md:text-5xl font-extrabold text-charred-oak mb-4 tracking-tight" style="color: #101010;">
+                Our Esteemed Clients 🤝
+            </h2>
+            <p class="text-gray-600 text-xl max-w-3xl mx-auto font-light">
+                We are proud to collaborate with leading firms across various industries, driving successful projects together.
+            </p>
+        </div>
+
+        <div class="fade-in">
+            <div class="p-6 md:p-12 rounded-2xl border border-gray-100 bg-white shadow-xl">
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+                    
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Sadeer General Trading
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Hyundai Engineering & Construction
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Alghanim International
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Nasser Al Hajiri Corporation
+                        </span>
+                    </div>
+                    
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Tamasuk United Company
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Prime One Group Gen. Trad.
+                        </span>
+                    </div>
+                    
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            British Link Kuwait
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Akeed United Company
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Ahmadiah Contracting & Trading
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Al Fakhama Company
+                        </span>
+                    </div>
+                    
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Khalifa Al Soory Trading
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Al Bahar National Company
+                        </span>
+                    </div>
+                    
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Middle East Development Co(MEDCO)
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Champion For Hospital Management
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Seobon Construction Ltd.
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Al Shaheen Technical Cont. Co
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Al Hamra Company
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Kuwaiti Manager Company
+                        </span>
+                    </div>
+
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Perfect Building Material
+                        </span>
+                    </div>
+                    
+                    <div class="flex justify-center items-center h-16 bg-white hover:bg-copper/5 rounded-lg border border-gray-200 transition duration-300 transform hover:border-copper/50">
+                        <span class="text-sm font-medium text-charred-oak/90 text-center px-2">
+                            Metallurgical Corporation of China Ltd
+                        </span>
+                    </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="py-24 bg-charred-oak text-cream-label" style="background-color: #636161;" >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div  class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
+                    Precision Interior Systems: Division 8 & 9 Specialists.
+                </h2>
+                <p class="text-xl max-w-4xl mx-auto opacity-80 font-light leading-relaxed" >
+                   The trusted partner for high-compliance commercial finishes. We engineer and deliver integrated acoustical ceilings, specialized partitions, and decorative cladding for Kuwait's most demanding projects.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10"> <div style="background-color: #101010;" class=" text-center fade-in p-6 border-2 border-copper/50 rounded-lg bg-dark-glass/80"> <div  style="background-color: #101010;" class="text-4xl mb-4">⚙️</div>
+                    <h3 class="font-bold text-lg mb-1 uppercase tracking-wider">Expert Engineering</h3>
+                    <p class="text-sm opacity-70 font-light">Custom solutions for complex commercial projects.</p>
+                </div>
+                
+                <div style="background-color: #101010;"  class="text-center fade-in p-6 border-2 border-copper/50 rounded-lg bg-dark-glass/80">
+                    <div class="text-4xl mb-4">✅</div>
+                    <h3 class="font-bold text-lg mb-1 uppercase tracking-wider">Compliance Guaranteed</h3>
+                    <p class="text-sm opacity-70 font-light">Meeting rigorous local and international standards.</p>
+                </div>
+                
+                <div  style="background-color: #101010;"class="text-center fade-in p-6 border-2 border-copper/50 rounded-lg bg-dark-glass/80">
+                    <div class="text-4xl mb-4">🏗️</div>
+                    <h3 class="font-bold text-lg mb-1 uppercase tracking-wider">On-Time Delivery</h3>
+                    <p class="text-sm opacity-70 font-light">Reliable supply chain and project execution.</p>
+                </div>
+                
+                <div  style="background-color: #101010;"class="text-center fade-in p-6 border-2 border-copper/50 rounded-lg bg-dark-glass/80">
+                    <div class="text-4xl mb-4">✨</div>
+                    <h3 class="font-bold text-lg mb-1 uppercase tracking-wider">Premium Finishes</h3>
+                    <p class="text-sm opacity-70 font-light">High-quality materials for lasting aesthetics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark-glass text-cream-label py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-6 gap-12">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="resources/logo.png" style= "width: 10rem;" alt="Skyline General Trading" class="h-1 w-12">
+                        <span class="font-bold text-2xl tracking-wider">SKYLINE TRADING</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md font-light">
+                        Interior finishing solutions across ceilings, partitions, access doors and decorative cladding for healthcare, education, aviation, commercial and residential projects.
+                    </p>
+                    <p class="text-sm text-gray-400">
+                         © 2024 Skyline General Trading. All rights reserved.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-extrabold text-lg mb-4 uppercase tracking-wider">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="products.html" class="text-gray-300 hover:text-copper transition-colors duration-300 font-light">Products</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-copper transition-colors duration-300 font-light">About</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-copper transition-colors duration-300 font-light">Contact</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-copper transition-colors duration-300 font-light">Tours</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-extrabold text-lg mb-4 uppercase tracking-wider">Visit Us</h4>
+                    <a href="https://www.google.com/maps/place/Kherbet+Qanafar/@33.6398775,35.5745345,12z/data=!3m1!4b1!4m6!3m5!1s0x151f27e7f9fed801:0xf585de97c8298946!8m2!3d33.6375916!4d35.7254647!16s%2Fg%2F120qcjm1?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="block">
+					<p class="text-gray-300 mb-2 font-light">
+                        Kuwait
+                    </p>
+                    <p class="text-gray-300 font-light">
+                        Kherebt Kanafar
+                    </p>
+					</a>
+                </div>
+
+                <div class="col-span-2">
+                    <h4 class="font-extrabold text-lg mb-4 uppercase tracking-wider">Contact</h4>
+                    <ul class="space-y-3">
+                        <li><a href="mailto:info@skyline.com" class="text-gray-300 hover:text-copper transition-colors duration-300 font-light">info@skyline.com</a></li>
+                        <li><a href="tel:+96512345678" class="text-gray-300 hover:text-copper transition-colors duration-300 font-light">+965 123 45678</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="main.js" defer></script>
+    <script>
+        // Initialize Splide carousel
+        document.addEventListener('DOMContentLoaded', function() {
+            new Splide('#products-carousel', {
+                type: 'loop',
+                perPage: 3,
+                perMove: 1,
+                gap: '2rem',
+                autoplay: true,
+                interval: 4000,
+                breakpoints: {
+                    1024: {
+                        perPage: 2,
+                    },
+                    640: {
+                        perPage: 1,
+                    }
+                }
+            }).mount();
+        });
+    </script>
+
+<script>
+/*
+/* Skyline General Trading — Full Inline Quiz (Code is retained and updated for modern styles) */
+/*
+(function () {
+  // --- 0) Ensure section + container + Start button exist ---
+  var qc = document.getElementById('quiz-container');
+  if (!qc) {
+    var sec = document.createElement('section');
+    // Updated background and classes for a modern look using existing colors
+    sec.className = 'py-24 bg-charred-oak text-center'; 
+    sec.innerHTML =
+      '<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">' +
+        // Updated text for relevance to interior systems
+        '<h2 class="text-4xl font-bold text-cream-label mb-4 tracking-tight">Discover Your Ideal Finish</h2>' +
+        '<p class="max-w-2xl mx-auto text-cream-label mb-8 leading-relaxed font-light opacity-80">Tell us about your project—healthcare, commercial, or residential—and we\'ll guide you to the perfect solution.</p>' +
+        '<div id="quiz-container">' +
+          // Updated button class to use modern-button style
+          '<button id="start-quiz-btn" type="button" class="modern-button bg-copper hover:bg-liquid-gold text-white font-semibold py-3 px-6 rounded-full shadow-lg transition uppercase tracking-wider">Start</button>' +
+        '</div>' +
+      '</div>';
+    // Find the correct place to inject it (after client section, before awards)
+    var clientSection = document.querySelector('section.bg-cream-label');
+    if (clientSection) {
+        // Inject the quiz before the awards section if it exists
+        clientSection.parentNode.insertBefore(sec, clientSection.nextElementSibling);
+    } else {
+        var awardsSection = document.querySelector('section.bg-charred-oak');
+        (awardsSection && awardsSection.parentNode ? awardsSection.parentNode.insertBefore(sec, awardsSection) : document.body.appendChild(sec));
+    }
+    qc = sec.querySelector('#quiz-container');
+  }
+
+  // --- 1) Data ---
+  // Data updated to be relevant to Skyline General Trading's business (Div 8 & 9)
+  const quizData = [
+    { question: "What is the primary sector of your project?",
+      options: ["🏥 Healthcare / Medical", "🏢 Commercial / Office / Retail", "🏫 Education / Institutional", "🏠 Residential / Hospitality"] },
+    { question: "What is the key requirement for the interior system?",
+      options: ["🔇 Superior Acoustics / Noise Reduction", "🔥 Fire-Rated / High-Compliance", "🎨 Aesthetic / Decorative Impact", "🛠️ Durability / High Traffic Resistance"] },
+    { question: "Which division of products are you focused on?",
+      options: ["🚪 Division 8 (Doors, Frames, Hardware)", "🧱 Division 9 (Finishes: Ceilings, Walls, Flooring)"] }
+  ];
+
+  const PRODUCTS = {
+    // Product names updated to be relevant to a general trading/interior finishes company
+    prod_acoustic_ceilings:   { name:"Acoustical Ceilings",         desc:"High-performance sound dampening ceiling solutions for various spaces.", img:"resources/placeholder.png",              link:"products.html" },
+    prod_partitions:         { name:"Specialized Partitions", desc:"Fire-rated and movable partitions for flexible space planning.",             img:"resources/placeholder.png",     link:"products.html" },
+    prod_access_doors:       { name:"Access Doors & Panels",              desc:"Concealed and fire-rated access solutions.",        img:"resources/placeholder.png",                  link:"products.html" },
+    prod_cladding:  { name:"Decorative Cladding",         desc:"Architectural wall and column finishes for aesthetic impact.",       img:"resources/placeholder.png",            link:"products.html" },
+    prod_flooring:       { name:"High-Compliance Flooring",       desc:"Durable, non-slip flooring for commercial and medical use.",                img:"resources/placeholder.png",              link:"products.html" },
+    prod_hospitals: { name:"Healthcare Systems",desc:"Antimicrobial and high-cleanability surfaces.",               img:"resources/placeholder.png",   link:"products.html" }
+  };
+*/
+  let current = 0;
+  const answers = [];
+
+  // --- 2) Renderers ---
+  function renderQuestion() {
+    const q = quizData[current];
+    const pct = Math.round(((current + 1) / quizData.length) * 100);
+    qc.innerHTML =
+      '<div class="bg-white p-8 rounded-xl shadow-2xl max-w-3xl mx-auto border-t-4 border-copper">' + // Modern shadow and top border, using copper
+        '<div class="mb-6">' +
+          '<div class="bg-gray-200 rounded-full h-2 mb-4"><div class="bg-copper h-2 rounded-full" style="width:'+pct+'%"></div></div>' +
+          '<p class="text-sm text-gray-600 font-light">STEP '+ (current+1) +' of '+ quizData.length +'</p>' +
+        '</div>' +
+        '<h3 class="text-3xl font-bold text-charred-oak mb-8 tracking-tight">'+ q.question +'</h3>' +
+        '<div class="space-y-4">' +
+          // Updated style for modern buttons: full white background, subtle border, strong hover
+          q.options.map((opt,i)=>'<button type="button" data-option="'+i+'" class="w-full text-left p-5 border-2 border-gray-200 rounded-lg hover:border-copper hover:bg-copper/5 transition-all text-lg font-medium text-charred-oak shadow-sm">'+opt+'</button>').join('') +
+        '</div>' +
+      '</div>';
+  }
+
+  function recommend(pools){
+    const score = {};
+    pools.flat().forEach(id => score[id] = (score[id]||0)+1);
+    // Use the product IDs from the updated PRODUCTS object
+    return Object.keys(score).sort((a,b)=>score[b]-score[a]).slice(0,3);
+  }
+
+  function renderResults() {
+    const [sector,requirement,division] = answers;
+
+    // Mapping logic updated to use new product keys
+    const bySector = [
+      ["prod_acoustic_ceilings","prod_partitions","prod_hospitals"], // Healthcare
+      ["prod_partitions","prod_access_doors","prod_cladding"], // Commercial
+      ["prod_acoustic_ceilings","prod_flooring"], // Education
+      ["prod_cladding","prod_partitions","prod_access_doors"] // Residential
+    ][sector] || [];
+
+    const byRequirement = [
+      ["prod_acoustic_ceilings","prod_partitions"], // Acoustics
+      ["prod_partitions","prod_access_doors"], // Fire-Rated
+      ["prod_cladding","prod_hospitals"], // Aesthetic (Hospitals for clean aesthetic)
+      ["prod_flooring"] // Durability
+    ][requirement] || [];
+
+    const byDivision = [
+      ["prod_access_doors"], // Div 8
+      ["prod_acoustic_ceilings","prod_partitions","prod_cladding","prod_flooring","prod_hospitals"] // Div 9
+    ][division] || [];
+
+    const ids = recommend([bySector,byRequirement,byDivision]);
+    const cards = ids.map(id=>{
+      const p = PRODUCTS[id];
+      return (
+        // Clean card style
+        '<div class="border border-gray-100 rounded-xl p-6 bg-white hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">' +
+          '<div class="w-full h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center text-4xl text-copper font-extrabold">IMAGE</div>' + // Placeholder, using copper
+          '<h4 class="text-xl font-extrabold text-charred-oak mb-2 tracking-tight">'+p.name+'</h4>' +
+          '<p class="text-gray-600 mb-4 font-light">'+p.desc+'</p>' +
+          // Updated button style, using copper/liquid-gold
+          '<a href="'+p.link+'" class="inline-block text-sm modern-button bg-copper text-white py-2 px-4 rounded-full hover:bg-liquid-gold font-semibold">View Product</a>' +
+        '</div>'
+      );
+    }).join('');
+
+    qc.innerHTML =
+      '<div class="bg-cream-label p-10 rounded-xl shadow-2xl max-w-5xl mx-auto border-t-4 border-copper">' +
+        '<h3 class="text-3xl font-extrabold text-charred-oak mb-8 text-center tracking-tight">Recommended Solutions</h3>' +
+        '<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">'+cards+'</div>' +
+        '<div class="text-center mt-10">' +
+          // Updated button style, using charred-oak/copper
+          '<button id="quiz-restart" type="button" class="modern-button bg-charred-oak text-white py-3 px-6 rounded-full hover:bg-copper shadow-lg uppercase tracking-wider">Take Quiz Again</button>' +
+        '</div>' +
+      '</div>';
+  }
+
+  // --- 3) Event delegation (works for all dynamic buttons) ---
+  document.addEventListener('click', function (e) {
+    const start = e.target.closest('#start-quiz-btn');
+    if (start) {
+      e.preventDefault();
+      current = 0; answers.length = 0;
+      renderQuestion();
+      return;
+    }
+
+    const optBtn = e.target.closest('[data-option]');
+    if (optBtn && optBtn.parentNode) {
+      e.preventDefault();
+      answers.push(parseInt(optBtn.getAttribute('data-option'),10));
+      if (current < quizData.length - 1) {
+        current++; renderQuestion();
+      } else {
+        renderResults();
+      }
+      return;
+    }
+
+    const restart = e.target.closest('#quiz-restart');
+    if (restart) {
+      e.preventDefault();
+      current = 0; answers.length = 0;
+      renderQuestion();
+    }
+  });
+})();
+</script>
+
+
+</body>
+</html>

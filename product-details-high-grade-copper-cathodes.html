@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Skyline General Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'copper': '#88674e', 
+                        'charred-oak': '#2C1810',
+                        'liquid-gold': '#D4AF37',
+                        'cream-label': '#FFFFFF', 
+                        'dark-glass': '#1A1A1A'
+                    },
+                    fontFamily: {
+                        // ALL FONTS now use 'Inter' for a unified, professional look.
+                        'display': ['Inter', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                        'accent': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .section-light-bg {
+            background-color: #f8f8f8; 
+        }
+        
+        .backdrop-blur-custom {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(44, 24, 16, 0.15);
+        }
+        
+        .filter-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            background-color: #fff;
+            color: #2C1810;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        
+        .filter-btn:hover {
+            background-color: #f8f8f8; 
+            border-color: #88674e; 
+        }
+        
+        .filter-btn.active {
+            background-color: #88674e; 
+            color: #FFFFFF; 
+            border-color: #88674e;
+            box-shadow: 0 5px 15px rgba(136, 103, 78, 0.3);
+        }
+    </style>
+</head>
+<body class="font-body text-charred-oak bg-cream-label min-h-screen">
+    <nav class="fixed top-0 w-full z-40 backdrop-blur-custom border-b border-copper border-opacity-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="resources/logo.png" alt="Skyline General Trading Logo" class="h-10 w-10" Style= "width: 10rem;">
+                    <span class="font-accent text-xl font-bold text-charred-oak">Skyline General Trading</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Home</a>
+                    <a href="products.html" class="text-copper font-semibold">Products</a>
+                    <a href="about.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">About</a>
+                    <a href="contact.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Contact</a>
+                </div>
+                
+                <button class="md:hidden text-charred-oak">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24">
+        <section class="pb-12 section-light-bg"> 
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="font-display text-4xl lg:text-5xl font-extrabold text-charred-oak pt-10 mb-4">Our Product Portfolio</h1>
+                    <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+                        A curated selection of the finest industrial materials, commodities, and specialized goods.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+                    
+                    <aside class="lg:col-span-1 p-6 bg-white rounded-xl shadow-lg h-min sticky top-24">
+                        <h2 class="font-accent text-xl font-bold text-charred-oak mb-4 border-b pb-2">Filter Categories</h2>
+                        <nav class="space-y-3">
+                            <button onclick="filterProducts('all', this)" class="filter-btn active">All Products</button>
+                            <button onclick="filterProducts('metals', this)" class="filter-btn">Industrial Metals</button>
+                            <button onclick="filterProducts('chemicals', this)" class="filter-btn">Chemical Feedstock</button>
+                            <button onclick="filterProducts('construction', this)" class="filter-btn">Construction Materials</button>
+                            <button onclick="filterProducts('commodities', this)" class="filter-btn">Soft Commodities</button>
+                        </nav>
+                    </aside>
+                    
+                    <div class="lg:col-span-3">
+                        <div id="product-grid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-8">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark-glass text-cream-label py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Skyline General Trading</h4>
+                    <p class="text-gray-300 text-sm">
+                        Bridging global markets with local expertise in raw materials and commodities trade.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Home</a></li>
+                        <li><a href="products.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Products</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-copper transition-colors duration-300">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Resources</h4>
+                    <ul>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Market Reports</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Supplier Portal</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Client List</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact & Location</h4>
+                    <p class="text-gray-300 mb-2">
+                        Salmiya, Salem Al Mubarak St
+                    </p>
+                    <p class="text-gray-300">
+                        Kuwait Head Office
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Centralized Product Data (Updated with short_desc and long_desc)
+        const productData = [
+            {
+                name: "High-Grade Copper Cathodes",
+                img: "resources/copper.jpg",
+                specs: ["Purity: 99.99%", "Form: Cathode Plates", "Weight: 125kg per unit", "Standard: LME Grade A"],
+                short_desc: "Electrolytic Copper Cathodes (Non-LME) for high conductivity applications, meeting 99.99% purity standards.",
+                long_desc: "Sourced from verified, sustainable partners, our copper cathodes are free from major impurities. They are ideally suited for rod production, wire manufacturing, and high-tech electrical infrastructure. We offer flexible terms for bulk purchases and ensure compliance with all international trade and quality certifications.",
+                category: "metals"
+            },
+            {
+                name: "Polypropylene Resin (PP)",
+                img: "resources/polypropylene.jpg",
+                specs: ["Grade: Homopolymer", "Melt Flow Rate: 10-25 g/10min", "Form: Pellets", "Packaging: 25kg Bags"],
+                short_desc: "Versatile Homopolymer PP resin suitable for injection molding and fiber production, offering high heat resistance.",
+                long_desc: "Our Polypropylene resin is a high-quality thermoplastic polymer used in a wide range of industries including packaging, automotive components, and textiles. The resin provides excellent chemical resistance and low density, making it a cost-effective choice for various manufacturing processes.",
+                category: "chemicals"
+            },
+            {
+                name: "Reinforcing Steel Bar (Rebar)",
+                img: "resources/rebar.jpg",
+                specs: ["Diameter: 8mm - 32mm", "Grade: ASTM A615 Grade 60", "Length: 12 meters", "Standard: ASTM A615"],
+                short_desc: "High-strength deformed steel bars designed to provide tension resistance in concrete structures, enhancing durability.",
+                long_desc: "We supply Rebar compliant with the highest international structural standards. Essential for civil engineering and construction, our reinforcing bars feature excellent bonding characteristics, ensuring the structural integrity and longevity of buildings and infrastructure projects.",
+                category: "construction"
+            },
+            {
+                name: "Bulk Cane Sugar",
+                img: "resources/sugar.jpg",
+                specs: ["Origin: Brazil", "Polarization: 99.8% min", "Form: Granulated", "Packaging: Bulk Vessel"],
+                short_desc: "White refined cane sugar, fit for human consumption and industrial food production, delivered in bulk vessel volumes.",
+                long_desc: "Our Bulk Cane Sugar is sourced from major global producers, guaranteeing high quality and consistent supply. It is used extensively in the beverage and food industries worldwide. We handle all logistics, providing secure and timely delivery to your port.",
+                category: "commodities"
+            },
+            {
+                name: "Aluminum Ingots",
+                img: "resources/aluminum.jpg",
+                specs: ["Purity: A8 (99.8%)", "Form: Ingots", "Dimensions: Standard T-bar", "Weight: Approx. 750kg"],
+                short_desc: "Primary Aluminum Ingots used for alloying and casting in automotive and aerospace applications.",
+                long_desc: "Offering low-cost, high-volume sourcing, our Aluminum Ingots are available for immediate bulk shipment. They serve as a fundamental building block for secondary aluminum products, providing superior lightness and corrosion resistance.",
+                category: "metals"
+            },
+            {
+                name: "Caustic Soda (Sodium Hydroxide)",
+                img: "resources/caustic-soda.jpg",
+                specs: ["Form: Flakes", "Purity: 99% min", "Molecular Formula: NaOH", "Packaging: 25kg Bags"],
+                short_desc: "Industrial-grade Caustic Soda flakes, vital for cleaning, water treatment, and chemical synthesis processes.",
+                long_desc: "Caustic Soda is one of the most widely used basic chemicals, crucial in sectors ranging from petroleum refining to textile manufacturing. We ensure safe, compliant, and prompt delivery in sealed containers.",
+                category: "chemicals"
+            },
+            {
+                name: "Portland Cement (Type I)",
+                img: "resources/cement.jpg",
+                specs: ["Type: Type I (General Use)", "Standard: ASTM C150", "Setting Time: Normal", "Packaging: 50kg Bags or Bulk"],
+                short_desc: "Standard hydraulic cement used in general concrete construction for pavements, buildings, and bridges.",
+                long_desc: "Our Portland Cement offers reliable strength and setting properties for a wide variety of construction projects. Available in robust 50kg bags or in bulk tanker delivery for large-scale infrastructure.",
+                category: "construction"
+            },
+            {
+                name: "Soybean Meal",
+                img: "resources/soybean-meal.jpg",
+                specs: ["Protein: 46% min", "Origin: Argentina/Brazil", "Moisture: 12% max", "Packaging: Bulk or 50kg Bags"],
+                short_desc: "High-protein animal feed ingredient, essential for poultry and livestock nutrition.",
+                long_desc: "Soybean meal is a high-value commodity in the feed industry due to its dense protein content. We source premium-grade meal globally, ensuring strict adherence to feed safety and quality standards for reliable performance.",
+                category: "commodities"
+            }
+        ];
+        
+    /**
+     * Converts a product name into a clean, URL-friendly slug.
+     * e.g., "High-Grade Copper Cathodes" -> "high-grade-copper-cathodes"
+     */
+    function createSlug(name) {
+        return name.toLowerCase()
+                   .trim()
+                   .replace(/[^a-z0-9\s-]/g, '') // Remove all non-alphanumeric characters except spaces and hyphens
+                   .replace(/\s+/g, '-')        // Replace spaces with hyphens
+                   .replace(/-+/g, '-');        // Collapse multiple hyphens
+    }
+
+    function generateProductLink(product) {
+        // Now returns a simple, static link using the product name slug
+        const slug = createSlug(product.name);
+        return `product-details-${slug}.html`;
+    }
+        
+        // Function to dynamically render the product cards based on the filter
+        function renderProducts(filterType = 'all') {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            
+            const filteredProducts = productData.filter(product => 
+                filterType === 'all' || product.category === filterType
+            );
+
+            filteredProducts.forEach(product => {
+                const productUrl = generateProductLink(product); // Use the new static link
+                // Capitalize the first letter of the category for the badge
+                const typeLabel = product.category.charAt(0).toUpperCase() + product.category.slice(1);
+                
+                const cardHtml = `
+                    <a href="${productUrl}" class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl flex flex-col" data-type="${product.category}">
+                        <img src="${product.img}" alt="${product.name}" class="h-48 w-full object-cover">
+                        <div class="p-5 flex-grow">
+                            <h3 class="font-accent text-xl font-bold text-charred-oak mb-2">${product.name}</h3>
+                            <p class="text-gray-600 text-sm">${product.short_desc}</p>
+                        </div>
+                        <div class="px-5 pb-5 pt-0">
+                            <span class="inline-block bg-copper text-white text-xs font-semibold px-3 py-1 rounded-full uppercase">${typeLabel}</span>
+                        </div>
+                    </a>
+                `;
+                
+                // Using insertAdjacentHTML is often cleaner than innerHTML += in a loop
+                grid.insertAdjacentHTML('beforeend', cardHtml);
+            });
+        }
+        
+        // Updated filterProducts to use the new renderProducts function
+        window.filterProducts = function(type, btn){
+            // Remove active class from all filter buttons
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            // Add active class to the clicked button
+            if (btn) btn.classList.add('active');
+            
+            const target = String(type || 'all').toLowerCase();
+            renderProducts(target); // Render the new filtered set
+        };
+
+        // Initialize the page on load
+        document.addEventListener('DOMContentLoaded', function(){
+            // Render all products and set 'All Products' as active
+            renderProducts('all'); 
+            const firstBtn = document.querySelector('.filter-btn');
+            if (firstBtn) {
+                firstBtn.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
