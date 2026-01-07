@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fire Rated Doors Details - Skyline General Trading</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+    /* CSS to arrange and size the images */
+    .image-container {
+        display: flex; /* Arranges children horizontally */
+        flex-wrap: nowrap; /* Prevents wrapping to the next line */
+        justify-content: space-around; /* Distributes space evenly */
+        align-items: flex-start; /* Aligns items to the top */
+        gap: 10px; /* Space between images */
+        width: 100%; /* Use full width of the parent container */
+        padding: 10px;
+        border: 1px solid #ccc; /* Optional: just for visualization */
+    }
+
+    .image-container div {
+        flex: 1 1 150px; /* Allows flexibility, but sets a base width of 150px */
+        max-width: 150px; /* Maximum width for each image/div */
+        text-align: center;
+    }
+
+    .image-container img {
+        width: 100%; /* Image takes up the full width of its parent div (150px) */
+        height: auto; /* Maintain aspect ratio */
+        display: block; /* Removes any extra space below the image */
+        border: 1px solid #eee; /* Optional border for the image */
+    }
+
+    .image-container p {
+        font-size: 12px;
+        margin-top: 5px;
+        font-family: sans-serif;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'copper': '#A9A9A9', 
+                    'charred-oak': '#2C1810',
+                    'liquid-gold': '#D4AF37',
+                    'cream-label': '#FFFFFF', 
+                    'dark-glass': '#1A1A1A'
+                },
+                fontFamily: {
+                    'display': ['Inter', 'sans-serif'], 
+                    'body': ['Inter', 'sans-serif'],
+                    'accent': ['Inter', 'sans-serif'] 
+                }
+            }
+        }
+    }
+</script>
+<style>
+.table-fixed {
+    border-collapse: collapse !important;
+    width: 100%;
+}
+
+.table-fixed th,
+.table-fixed td {
+    border: 1px solid #555 !important;
+    padding: 5px;
+    font-size: 12px;
+}
+</style>
+
+<style>
+    /* Navigation bar styles */
+    .backdrop-blur-custom {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95); 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+    }
+
+    /* Product card and layout styles */
+    .product-container {
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(44, 24, 16, 0.1);
+        overflow: hidden;
+    }
+    
+    .specs-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    .specs-list li {
+        background: #f9f9f9;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #2C1810;
+        border-left: 3px solid #A9A9A9; /* copper color */
+    }
+    
+    .tab-button {
+        padding: 15px 25px;
+        cursor: pointer;
+        font-weight: 600;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s;
+        flex-shrink: 0;
+    }
+
+    .tab-button:hover {
+        color: #A9A9A9;
+    }
+
+    .tab-button.active {
+        color: #A9A9A9; /* copper color */
+        border-bottom-color: #A9A9A9; /* copper color */
+    }
+    
+    /* Image Gallery Styles (using placeholder images for demo) */
+    .thumbnail {
+        width: 80px;
+        min-width: 80px; 
+        height: 80px;
+        object-fit: cover; 
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: all 0.2s;
+        border: 2px solid transparent;
+    }
+    
+    .thumbnail:hover {
+        opacity: 1;
+        border-color: #A9A9A9; 
+    }
+    
+    .thumbnail.active {
+        opacity: 1;
+        border-color: #A9A9A9; 
+        transform: scale(1.05);
+    }
+    
+    /* Features list item style */
+    .feature-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 12px;
+        border-radius: 8px;
+        background-color: #fcfcfc;
+        border: 1px solid #f0f0f0;
+    }
+    .feature-icon {
+        color: #A9A9A9; /* copper */
+        font-size: 1.5rem;
+        margin-right: 12px;
+        flex-shrink: 0;
+    }
+
+</style>
+</head>
+<body class="font-body text-charred-oak bg-cream-label min-h-screen">
+    <nav class="fixed top-0 w-full z-40 backdrop-blur-custom border-b border-copper border-opacity-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="resources/logo.png" alt="Skyline General Trading Logo" class="h-10 w-10" Style= "width: 10rem;">
+                    <span class="font-accent text-xl font-bold text-charred-oak">Skyline General Trading</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Home</a>
+                    <a href="products.html" class="text-copper font-semibold">Products</a>
+                    <a href="about.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">About</a>
+                    <a href="contact.html" class="text-charred-oak hover:text-copper transition-colors duration-300 font-semibold">Contact</a>
+                </div>
+                
+                <button class="md:hidden text-charred-oak">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="pt-24 pb-12"> 
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="product-container">
+                
+                <div class="grid md:grid-cols-2 gap-8 p-8">
+                    
+                    <div class="md:col-span-1 space-y-4">
+                        <div class="relative overflow-hidden rounded-lg shadow-xl aspect-square">
+                            <img id="mainProductImage" src="resources/steel door.png" alt="Reinforcing Steel Bar Main View" class="w-full h-full object-cover transition-opacity duration-300">
+                            <div id="imageName" class="absolute bottom-0 left-0 bg-charred-oak text-cream-label text-xs px-3 py-1 rounded-tr-lg opacity-80 font-body">Image 1 of 3</div>
+                        </div>
+                        <div id="thumbnailGallery" class="flex space-x-3 overflow-x-auto pb-2">
+                            </div>
+                    </div>
+                    
+                    <div class="md:col-span-1">
+                        <span class="text-sm font-semibold text-copper uppercase tracking-wider mb-2 block">Div 8</span>
+                        <h1 id="productName" class="font-display text-4xl font-bold text-charred-oak mb-4">Fire Rated Doors</h1>
+                        <p id="productShortDesc" class="text-lg leading-relaxed text-gray-700 mb-6 border-b pb-4">
+                           Skyline provides a wide range of Fire Proof Doors.
+                        </p>
+                        
+ <div>
+                                <h3 class="font-accent text-2xl font-semibold text-charred-oak mb-4 border-b pb-2">Characteristics</h3>
+                                <div class="grid sm:grid-cols-3 md:grid-cols-4 gap-3">
+                                    <span  style="font-family: Arial; font-size:12px" class="p-3 bg-gray-50 border rounded-md text-sm font-medium text-center text-charred-oak">Full Range of Sizes</span>
+                                    <span  style="font-family: Arial; font-size:12px"class="p-3 bg-gray-50 border rounded-md text-sm font-medium text-center text-charred-oak">Single or Double Leaf Version</span>
+                                    <span style="font-family: Arial; font-size:12px"class="p-3 bg-gray-50 border rounded-md text-sm font-medium text-center text-charred-oak">Glazing or Fire Protection Ventilation grills</span>
+									
+                                </div>
+                            </div>
+							</br>
+
+
+
+                        <div class="space-y-4">
+                            <h2 class="font-accent text-2xl font-semibold text-charred-oak mb-2">Inquire & Order</h2>
+                            <div class="flex gap-4">
+                                <button class="flex-1 bg-copper text-cream-label py-3 px-6 rounded-lg font-bold uppercase tracking-wider hover:bg-charred-oak transition-colors duration-300 shadow-md">
+                                    Order Sample
+                                </button>
+                                <button class="flex-1 border-2 border-copper text-copper py-3 px-6 rounded-lg font-bold uppercase tracking-wider hover:bg-copper hover:text-cream-label transition-colors duration-300">
+                                    Add To Project List
+                                </button>
+                            </div>
+                            <a href="products.html" class="block text-center text-sm text-gray-600 hover:text-copper font-medium mt-4">
+                                ← Back to All Products
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-200 mt-6 pt-0">
+                    <div class="flex border-b border-gray-200">
+                        <button class="tab-button active" data-tab="overview">Overview</button>
+                        <button class="tab-button" data-tab="specifications">Specifications</button>
+                    </div>
+
+                    <div class="p-8 space-y-8">
+                        
+                        <div id="overview-content" data-content>
+                            <div>
+                                <h3 class="font-accent text-2xl font-semibold text-charred-oak mb-4 border-b pb-2">Product Description</h3>
+                                <p id="productLongDesc" class="text-gray-700 leading-relaxed">Skyline provides a wide range of fire proof doors available with a variety of configuration and vision panel options, tested according to American Standards (UL) & British Standards (BS).The doors are made of galvanized steel sheets or stainless-steel sheets grade 304 (also
+available SS grade 316 on special customer request). Door leaves are filled with structural
+honeycomb or mineral wool with vertical stiffener of high density depending on the type
+of the door.
+
+                            </p>
+                            </div>
+                        </div>
+
+                        <div id="specifications-content" data-content class="hidden space-y-8">
+                            
+                            <div>
+                                <h3 class="font-accent text-2xl font-semibold text-charred-oak mb-4 border-b pb-2">Technical Specifications</h3>
+                                <ul id="productSpecs" class="specs-list">
+                                    </ul>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-accent text-2xl font-semibold text-charred-oak mb-4 border-b pb-2">Key Features
+</h3>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    
+                                    <div class="feature-item">
+                                        <i class="feature-icon fa-solid fa-fire"></i>
+                                        <p class="text-gray-700">Fire Rating: BS Standard -up to 4hours</p>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="feature-icon fa-solid fa-fire"></i>
+                                        <p class="text-gray-700">Fire Rating: UL Standard -upto 3hours</p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                           
+                            
+                            <div>
+                                <h3 class="font-accent text-2xl font-semibold text-charred-oak mb-4 border-b pb-2">Target Applications</h3>
+                                <div class="grid sm:grid-cols-3 md:grid-cols-4 gap-3">
+                                    <span  style="font-family: Arial; font-size:12px" class="p-3 bg-gray-50 border rounded-md text-sm font-medium text-center text-charred-oak">Staircase</span>
+                                    <span  style="font-family: Arial; font-size:12px"class="p-3 bg-gray-50 border rounded-md text-sm font-medium text-center text-charred-oak">Corridor</span>
+                                    <span style="font-family: Arial; font-size:12px"class="p-3 bg-gray-50 border rounded-md text-sm font-medium text-center text-charred-oak">Service Rooms</span>
+                                    <span style="font-family: Arial; font-size:12px"class="p-3 bg-gray-50 border rounded-md text-sm font-medium text-center text-charred-oak">Entrances</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    
+    <footer class="bg-dark-glass text-cream-label py-10 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Skyline General Trading</h4>
+                    <p class="text-gray-300 text-sm">
+                        Bridging global markets with local expertise in raw materials and commodities trade.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Home</a></li>
+                        <li><a href="products.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Products</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-copper transition-colors duration-300">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-copper transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Resources</h4>
+                    <ul>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Market Reports</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Supplier Portal</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-copper transition-colors duration-300">Client List</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact & Location</h4>
+                    <p class="text-gray-300 mb-2">
+                        Salmiya, Salem Al Mubarak St
+                    </p>
+                    <p class="text-gray-300">
+                        Kuwait Head Office
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script>
+// =========================================================
+// Hardcoded Product Data (for Specifications and Images)
+// =========================================================
+const productData = {
+    name: "Mineral Fiber",
+    category: "Construction Materials",
+    mainImage: 'resources/steel door.png',
+    images: [
+        // Ensure you have these image files in your 'resources' folder
+        { url: 'resources/steel door.png', name: '' }
+        
+    ],
+    // Data extracted from products.html
+    specs: [],
+};
+
+// =========================================================
+// Image Gallery Slider Logic
+// =========================================================
+
+function setupImageGallery(images) {
+    const mainImage = document.getElementById('mainProductImage');
+    const thumbnailGallery = document.getElementById('thumbnailGallery');
+    const imageNameDisplay = document.getElementById('imageName');
+
+    thumbnailGallery.innerHTML = ''; // Clear previous thumbnails
+
+    images.forEach((img, index) => {
+        // 1. Create the Thumbnail
+        const thumbnail = document.createElement('img');
+        thumbnail.src = img.url;
+        thumbnail.alt = img.name;
+        // Use custom CSS class for styling and interaction
+        thumbnail.classList.add('thumbnail', 'shadow-md', 'hover:shadow-lg'); 
+
+        // 2. Set the initial active state (first image)
+        if (index === 0) {
+            thumbnail.classList.add('active');
+            // The main image source is already set in the HTML for the first image, but we update the alt text/name display
+            mainImage.alt = img.name; 
+            imageNameDisplay.textContent = `${img.name} (${index + 1} of ${images.length})`;
+        }
+
+        // 3. Add click event listener to switch the main image
+        thumbnail.addEventListener('click', function() {
+            // Fade out, swap, then fade in for a smoother transition
+            mainImage.style.opacity = '0'; 
+            
+            setTimeout(() => {
+                // Swap image source
+                mainImage.src = img.url;
+                // Update text
+                imageNameDisplay.textContent = `${img.name} (${index + 1} of ${images.length})`;
+                // Fade in
+                mainImage.style.opacity = '1'; 
+            }, 150); // The duration matches the CSS transition: duration-300 / 2
+
+            // Update active state for thumbnails
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+        });
+
+        thumbnailGallery.appendChild(thumbnail);
+    });
+}
+
+
+function loadProduct() {
+    // --- Setup the Image Gallery ---
+    setupImageGallery(productData.images);
+
+    // --- Load Specifications ---
+    const specsList = document.getElementById('productSpecs');
+    specsList.innerHTML = '';
+    
+    productData.specs.forEach(spec => {
+        const li = document.createElement('li');
+        li.textContent = spec;
+        specsList.appendChild(li);
+    });
+    
+    // NOTE: All other static text (Name, Description, Features, Applications) 
+    // is hardcoded directly in the HTML structure above.
+}
+
+// =========================================================
+// Tab Switching Logic
+// =========================================================
+function switchTab(tabName) {
+    // Hide all content areas
+    document.querySelectorAll('[data-content]').forEach(content => {
+        content.classList.add('hidden');
+    });
+
+    // Deactivate all buttons
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Show the selected content
+    const selectedContent = document.getElementById(tabName + '-content');
+    if (selectedContent) {
+        selectedContent.classList.remove('hidden');
+    }
+
+    // Activate the selected button
+    const selectedButton = document.querySelector(`.tab-button[data-tab="${tabName}"]`);
+    if (selectedButton) {
+        selectedButton.classList.add('active');
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', function(){
+    loadProduct();
+
+    // Attach event listeners to the tab buttons
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const tabName = this.getAttribute('data-tab');
+            switchTab(tabName);
+        });
+    });
+
+    // Ensure the first tab is active on load
+    switchTab('overview');
+});
+</script>
+</body>
+</html>
